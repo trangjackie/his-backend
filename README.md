@@ -25,6 +25,7 @@ II. Cơ chế tracking sử dụng zipkin
     spring.zipkin.base-url=http://localhost:9411/
 3. Download file zipkin.jar (https://zipkin.io)
 4. Copy file zipkin.jar vào thư mục zipkin-server và chạy
+java.exe -jar .\zipkin-server-2.24.0-exec.jar
 
 III. Cấu trúc thư mục code
 entity: các đối tượng thể hiện tương ứng 1 table trong cơ sở dữ liệu

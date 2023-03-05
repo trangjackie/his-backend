@@ -37,7 +37,7 @@
             "name": "Launch Gateway",
             "request": "launch",
             "mainClass": "com.vns.his.gateway.GatewayApplication",
-            "projectName": "gateway"
+            "projectName": "gateway-server"
         },
         {
             "type": "java",

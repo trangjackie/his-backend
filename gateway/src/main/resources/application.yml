@@ -1,68 +1,65 @@
 spring:
   application:
-    name: gateway
+    name: gateway-server
 
-  profiles:
-     active: dev
-  # config:
-  #    import: optional:configserver:http://localhost:10118/
-  # cloud:
-  #   refresh:
-  #     extra-refreshable: com.zaxxer.hikari.HikariDataSource
+#  profiles:
+#     active: dev
+  config:
+     import: optional:configserver:http://localhost:10118/
+  cloud:
+    refresh:
+      extra-refreshable: com.zaxxer.hikari.HikariDataSource
 
-  servlet:
-    multipart:
-      max-file-size: 2MB
-      max-request-size: 2MB
-  zipkin:
-    base-url: http://localhost:9411/
 
-management:
-  endpoints:
-    enabled-by-default: true
-    web:
-      exposure:
-        include: refresh
+#   servlet:
+#     multipart:
+#       max-file-size: 2MB
+#       max-request-size: 2MB
+#   zipkin:
+#     base-url: http://localhost:9411/
 
-server:
-  port: 10112
-  forward-headers-strategy: framework
+# server:
+#   port: 10112
+#   forward-headers-strategy: framework
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    serviceUrl:
-      defaultZone: http://localhost:10113/eureka
+
+# eureka:
+#   client:
+#     register-with-eureka: true
+#     fetch-registry: true
+#     serviceUrl:
+#       defaultZone: http://localhost:10113/eureka
+
+# management:
+#   endpoints:
+#     enabled-by-default: true
+#     web:
+#       exposure:
+#         include: refresh
+
+# zuul:
+#   ignoredPatterns:
+#     - /v3/api-docs
+#     - /v3/api-docs/swagger-config
+#   ignored-services: '*'
+#   routes:
+#     auth-service:
+#       path: "/auth/**"
+#       service-id: auth-service
+#       sensitiveHeaders: Cookie,Set-Cookie
+#     user-info-service:
+#       path: "/user/**"
+#       service-id: user-info-service
+#       sensitiveHeaders: Cookie,Set-Cookie
+#     common-info-service:
+#       path: "/common/**"
+#       service-id: common-info-service
+#       sensitiveHeaders: Cookie,Set-Cookie
+#     apis:
+#       service-id: gateway-server
+#       path: "/v3/api-docs/**"
+#       stripPrefix: false
       
-zuul:
-  ignoredPatterns:
-    - /v3/api-docs
-    - /v3/api-docs/swagger-config
-  ignored-services: '*'
-  routes:
-    auth-service:
-      path: "/auth/**"
-      service-id: auth-service
-      sensitiveHeaders: Cookie,Set-Cookie
-    user-info-service:
-      path: "/user/**"
-      service-id: user-info-service
-      sensitiveHeaders: Cookie,Set-Cookie
-    common-info-service:
-      path: "/common/**"
-      service-id: common-info-service
-      sensitiveHeaders: Cookie,Set-Cookie
-    apis:
-      service-id: gateway
-      path: "/v3/api-docs/**"
-      stripPrefix: false
-      
-ribbon:
-  ConnectTimeout: 1000
-  ReadTimeout: 20000
-      
-logging:
-  level:
-    root: INFO
-  file: gateway.log
+# ribbon:
+#   ConnectTimeout: 1000
+#   ReadTimeout: 20000
