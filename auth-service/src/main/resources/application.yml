@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: auth-service
+    
+  profiles:
+      active: dev
+  config:
+      import: optional:configserver:http://localhost:10118/
+  cloud:
+    refresh:
+      extra-refreshable: com.zaxxer.hikari.HikariDataSource

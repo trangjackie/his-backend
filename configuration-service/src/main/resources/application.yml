@@ -1,0 +1,26 @@
+server:
+  port: 10118
+
+
+spring:
+  application:
+    name: configuration-service
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+        # Lựa chọn search location khác nhau cho các môi trường triển khai khác nhau
+        # Lưu ý: Đường dẫn tới folder config là đường dẫn tương đối so với vị trí thực thi configuration service
+        # Trong trường hợp debug trực tiếp trên visual studio code tại thự mục cha (chứa tất cả các project) thì path = ./configuration-service./config-xxx
+        # Trường hợp chạy service trong thư mục của project thì path = ./config-xxx
+
+          search-locations: ./configuration-service./config-dev # Configuration cho các service trên Môi trường cloud server
+          #search-locations: ./configuration-service/config-local # Configuration cho các service trên Môi trường local của developer
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:10113/eureka
